@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Me | Kamila Nawa Ibnatie</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top left, #ffd9e8, transparent 35%),
+                radial-gradient(circle at bottom right, #ffb5d0, transparent 35%),
+                #fff4f8;
+            color: #4b2637;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+
+        nav {
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #d93678;
+        }
+
+        .logo span {
+            color: #ff80ad;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #71354f;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e93678;
+        }
+
+        /* ===== MAIN ===== */
+
+        .container {
+            min-height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 8%;
+        }
+
+        .about-card {
+            width: 100%;
+            max-width: 1050px;
+            padding: 55px;
+            border-radius: 35px;
+
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255, 120, 170, 0.3);
+
+            box-shadow:
+                0 25px 70px rgba(210, 54, 118, 0.15);
+
+            display: flex;
+            gap: 60px;
+            align-items: center;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ===== FOTO ===== */
+
+        .profile {
+            width: 320px;
+            min-width: 320px;
+            text-align: center;
+        }
+
+        .photo {
+            width: 240px;
+            height: 240px;
+            margin: auto;
+
+            border-radius: 50%;
+
+            padding: 8px;
+
+            background: linear-gradient(
+                135deg,
+                #ff4f91,
+                #ffb6d2,
+                #fff
+            );
+
+            box-shadow:
+                0 15px 35px rgba(217, 54, 118, 0.25);
+
+            transition: 0.4s;
+        }
+
+        .photo:hover {
+            transform: translateY(-8px) rotate(2deg);
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid white;
+        }
+
+        .profile h3 {
+            margin-top: 20px;
+            color: #d93678;
+            font-size: 22px;
+        }
+
+        .profile p {
+            color: #916078;
+            font-size: 14px;
+        }
+
+        /* ===== TEXT ===== */
+
+        .text {
+            flex: 1;
+        }
+
+        .hello {
+            color: #e93678;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 48px;
+            line-height: 1.15;
+            color: #442536;
+            margin-bottom: 15px;
+        }
+
+        h1 span {
+            color: #e93678;
+        }
+
+        .description {
+            line-height: 1.8;
+            color: #795066;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* ===== INFO ===== */
+
+        .info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .tag {
+            padding: 9px 15px;
+            border-radius: 50px;
+            background: #ffe1ed;
+            color: #c8326b;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #ffc1d7;
+        }
+
+        /* ===== BUTTON ===== */
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: #e93678;
+            color: white;
+            box-shadow: 0 8px 20px rgba(233, 54, 120, 0.25);
+        }
+
+        .primary:hover {
+            background: #c92865;
+            transform: translateY(-3px);
+        }
+
+        .secondary {
+            color: #d93678;
+            border: 1.5px solid #ed78a5;
+            background: white;
+        }
+
+        .secondary:hover {
+            background: #ffe4ef;
+            transform: translateY(-3px);
+        }
+
+        /* ===== DECORATIVE FLOWERS ===== */
+
+        .flower {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.8;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .flower1 {
+            font-size: 55px;
+            top: 15px;
+            right: 30px;
+        }
+
+        .flower2 {
+            font-size: 40px;
+            bottom: 25px;
+            left: 30px;
+            animation-delay: 1s;
+        }
+
+        .flower3 {
+            font-size: 30px;
+            top: 50%;
+            right: 20px;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* ===== FALLING FLOWERS ===== */
+
+        .falling {
+            position: fixed;
+            top: -30px;
+            color: #ff80ad;
+            font-size: 22px;
+            animation: fall linear infinite;
+            pointer-events: none;
+        }
+
+        .f1 {
+            left: 10%;
+            animation-duration: 7s;
+        }
+
+        .f2 {
+            left: 30%;
+            animation-duration: 9s;
+            animation-delay: 2s;
+        }
+
+        .f3 {
+            left: 55%;
+            animation-duration: 8s;
+            animation-delay: 1s;
+        }
+
+        .f4 {
+            left: 80%;
+            animation-duration: 10s;
+            animation-delay: 3s;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-50px) rotate(0deg);
+            }
+
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+
+        @media (max-width: 850px) {
+
+            nav {
+                padding: 18px 6%;
+            }
+
+            nav div:last-child {
+                display: none;
+            }
+
+            .container {
+                padding: 25px 5%;
+            }
+
+            .about-card {
+                flex-direction: column;
+                padding: 40px 25px;
+                text-align: center;
+                gap: 35px;
+            }
+
+            .profile {
+                min-width: auto;
+                width: 100%;
+            }
+
+            .photo {
+                width: 190px;
+                height: 190px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .info,
+            .buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            h1 {
+                font-size: 31px;
+            }
+
+            .about-card {
+                border-radius: 25px;
+                padding: 35px 20px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            K<span>.</span>
+        </div>
+
+        <div>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Project</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Falling Flowers -->
+    <div class="falling f1">🌸</div>
+    <div class="falling f2">✿</div>
+    <div class="falling f3">🌷</div>
+    <div class="falling f4">❀</div>
+
+    <!-- Main -->
+    <main class="container">
+
+        <section class="about-card">
+
+            <!-- Decorative flowers -->
+            <div class="flower flower1">🌸</div>
+            <div class="flower flower2">🌷</div>
+            <div class="flower flower3">✿</div>
+
+            <!-- Profile -->
+            <div class="profile">
+
+                <div class="photo">
+
+                    <!-- Ganti foto.jpg dengan nama foto kamu -->
+                    <img src="nanat.jpeg" alt="Foto Kamila">
+
+                </div>
+
+                <h3>Kamila Nawa Ibnatie</h3>
+
+                <p>Student • PPLG • Dreamer 🌷</p>
+
+            </div>
+
+            <!-- About Text -->
+            <div class="text">
+
+                <div class="hello">
+                    HELLO, I'M KAMILA 👋
+                </div>
+
+                <h1>
+                    A little bit<br>
+                    <span>about me.</span>
+                </h1>
+
+                <p class="description">
+                    Halo! Aku Kamila Nawa Ibnatie, seorang pelajar
+                    yang sedang belajar dan berkembang di dunia teknologi.
+                    Aku tertarik dengan pemrograman, desain website,
+                    dan hal-hal kreatif.
+                    <br><br>
+                    Aku percaya bahwa proses belajar tidak harus selalu
+                    sempurna. Yang penting adalah terus mencoba,
+                    berkembang, dan menjadi versi terbaik dari diri sendiri. ♡
+                </p>
+
+                <!-- Tags -->
+                <div class="info">
+
+                    <div class="tag">💻 Programming</div>
+                    <div class="tag">🎨 Creative</div>
+                    <div class="tag">🌷 Student</div>
+                    <div class="tag">✨ Dreamer</div>
+
+                </div>
+
+                <!-- Buttons -->
+                <div class="buttons">
+
+                    <a href="#" class="btn primary">
+                        Contact me 💌
+                    </a>
+
+                    <a href="#" class="btn secondary">
+                        My Projects →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
