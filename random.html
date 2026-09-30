@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spiderman Animasi CSS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(to bottom, #0a0a1a, #1a1a3a, #2d1b4e);
+            position: relative;
+        }
+
+        /* === LATAR KOTA MALAM === */
+        .city {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 40%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+        }
+
+        .building {
+            background: #0f0f23;
+            width: 60px;
+            animation: gedung 8s ease-in-out infinite alternate;
+        }
+
+        .building:nth-child(odd) { height: 180px; }
+        .building:nth-child(even) { height: 260px; }
+        .building:nth-child(3n) { height: 220px; }
+
+        .window {
+            width: 8px;
+            height: 12px;
+            background: #ffd700;
+            margin: 8px auto;
+            border-radius: 1px;
+            animation: jendela 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes jendela {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+
+        /* === BINTANG / LAMPU === */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: kelap 4s ease-in-out infinite;
+        }
+
+        @keyframes kelap {
+            0%,100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        /* === JARING LABALABA === */
+        .web {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 3px;
+            background: linear-gradient(to bottom, #ffffff, rgba(255,255,255,0.1));
+            transform-origin: top center;
+            animation: ayun 3s ease-in-out infinite alternate;
+        }
+
+        /* === KERANGKA SPIDERMAN === */
+        .spiderman {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform-origin: top center;
+            animation: ayun 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes ayun {
+            0% { transform: translateX(-50%) rotate(-12deg); }
+            100% { transform: translateX(-50%) rotate(12deg); }
+        }
+
+        /* === KEPALA === */
+        .head {
+            width: 50px;
+            height: 55px;
+            background: linear-gradient(135deg, #e62429, #c41e24);
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3);
+        }
+
+        .head::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 48px;
+            border: 2px solid #000;
+            border-radius: 50%;
+        }
+
+        /* MATA */
+        .eye {
+            position: absolute;
+            width: 14px;
+            height: 16px;
+            background: #fff;
+            border-radius: 50%;
+            top: 22px;
+            animation: kedip 2.5s ease-in-out infinite;
+        }
+
+        .eye.left { left: 6px; }
+        .eye.right { right: 6px; }
+
+        @keyframes kedip {
+            0%,90%,100% { transform: scaleY(1); }
+            95% { transform: scaleY(0.1); }
+        }
+
+        /* === BADAN === */
+        .body {
+            width: 44px;
+            height: 55px;
+            background: linear-gradient(180deg, #e62429, #b21e23);
+            margin: -5px auto 0;
+            border-radius: 45% 45% 30% 30%;
+            position: relative;
+            box-shadow: inset -5px 0 10px rgba(0,0,0,0.25);
+        }
+
+        .body::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-bottom: 22px solid #0066cc;
+        }
+
+        /* === LENGAN === */
+        .arm {
+            position: absolute;
+            width: 12px;
+            height: 40px;
+            background: linear-gradient(90deg, #0066cc, #0052a3);
+            border-radius: 6px;
+            transform-origin: top center;
+            top: 5px;
+        }
+
+        .arm.left {
+            left: -10px;
+            animation: gerakLenganKiri dan menggerakan jari mengeluarkan jaring laba laba 3s ease-in-out infinite alternate;
+        }
+
+        .arm.right {
+            right: -10px;
+            animation: gerakLenganKanan 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes gerakLenganKiri {
+            0% { transform: rotate(70deg); }
+            100% { transform: rotate(110deg); }
+        }
+
+        @keyframes gerakLenganKanan {
+            0% { transform: rotate(-70deg); }
+            100% { transform: rotate(-110deg); }
+        }
+
+        /* === KAKI === */
+        .leg {
+            position: absolute;
+            bottom: -30px;
+            width: 12px;
+            height: 35px;
+            background: linear-gradient(90deg, #0066cc, #0052a3);
+            border-radius: 6px;
+            transform-origin: top center;
+        }
+
+        .leg.left {
+            left: 8px;
+            animation: kakiKiri 3s ease-in-out infinite alternate;
+        }
+
+        .leg.right {
+            right: 8px;
+            animation: kakiKanan 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes kakiKiri {
+            0% { transform: rotate(15deg); }
+            100% { transform: rotate(-5deg); }
+        }
+
+        @keyframes kakiKanan {
+            0% { transform: rotate(-15deg); }
+            100% { transform: rotate(5deg); }
+        }
+
+        /* === EFEK MENEMBAKKAN JARING === */
+        .web-line {
+            position: absolute;
+            top: 30px;
+            right: -120px;
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, #fff, transparent);
+            animation: tembakJaring 3s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes tembakJaring {
+            0% { right: -40px; opacity: 0; }
+            50% { right: -120px; opacity: 1; }
+            100% { right: -180px; opacity: 0; }
+        }
+
+        /* === CAHAYA GLOW === */
+        .glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(220,30,40,0.15), transparent 70%);
+            border-radius: 50%;
+            animation: bercahaya 2s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes bercahaya {
+            0% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.15); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bintang di langit -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Jaring penggantung -->
+    <div class="web" style="height: 18%;"></div>
+
+    <!-- Spiderman -->
+    <div class="spiderman">
+        <div class="glow"></div>
+        <div class="head">
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+        </div>
+        <div class="body">
+            <div class="arm left"></div>
+            <div class="arm right">
+                <div class="web-line"></div>
+            </div>
+            <div class="leg left"></div>
+            <div class="leg right"></div>
+        </div>
+    </div>
+
+    <!-- Latar kota -->
+    <div class="city">
+        <div class="building"><div class="window"></div><div class="window"></div><div class="window"></div></div>
+        <div class="building"><div class="window"></div><div class="window"></div></div>
+        <div class="building"><div class="window"></div><div class="window"></div><div class="window"></div><div class="window"></div></div>
+        <div class="building"><div class="window"></div></div>
+        <div class="building"><div class="window"></div><div class="window"></div></div>
+        <div class="building"><div class="window"></div><div class="window"></div><div class="window"></div></div>
+    </div>
+
+    <!-- Script bintang -->
+    <script>
+        const starsContainer = document.getElementById('stars');
+        for(let i=0; i<60; i++){
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.left = Math.random()*100 + '%';
+            star.style.top = Math.random()*60 + '%';
+            star.style.animationDelay = Math.random()*4 + 's';
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
